@@ -1,7 +1,7 @@
 import splitMeasure from '@toddself/split-measure-unit'
 
-const types = Object.seal({
-  dict: Object.seal(['grain', 'sugar', 'extract']),
+const types = Object.freeze({
+  dict: Object.freeze(['grain', 'sugar', 'extract']),
   grain: 0,
   sugar: 1,
   extract: 2

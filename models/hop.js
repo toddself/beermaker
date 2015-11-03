@@ -1,14 +1,14 @@
 import splitMeasure from '@toddself/split-measure-units'
 
-const types = Object.seal({
-  dict: Object.seal(['pellet', 'leaf', 'plug']),
+const types = Object.freeze({
+  dict: Object.freeze(['pellet', 'leaf', 'plug']),
   pellet: 0,
   leaf: 1,
   plug: 2
 })
 
-const purposes = Object.seal({
-  dict: Object.seal(['bittering', 'aroma', 'both']),
+const purposes = Object.freeze({
+  dict: Object.freeze(['bittering', 'aroma', 'both']),
   bittering: 0,
   aroma: 1,
   both: 2
