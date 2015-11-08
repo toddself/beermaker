@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@toddself/split-measure-units": "~1.0.1",
-    "beermath": "~1.0.4"
+    "beermath": "~1.2.0"
   },
   "devDependencies": {
     "babel": "~6.0.15",
