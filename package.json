@@ -1,14 +1,15 @@
 {
-  "name": "beer",
+  "name": "beermaker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A beer recipe designing thing",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Todd Kennedy <todd@selfassembled.org>",
+  "license": "Apache-2.0",
   "dependencies": {
+    "@toddself/convert-units": "~0.2.0",
     "@toddself/split-measure-units": "~1.0.1",
     "beermath": "~1.2.0"
   },
