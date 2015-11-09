@@ -1,3 +1,5 @@
+import EventEmitter from 'events'
+
 import splitMeasure from '@toddself/split-measure-unit'
 
 const types = Object.freeze({
@@ -13,8 +15,9 @@ const colorAmountSym = Symbol('colorAmount')
 const weightUnitSym = Symbol('weightUnit')
 const weightAmountSym = Symbol('weightAmount')
 
-export default class Fermentable {
+export default class Fermentable extends EventEmitter {
   constructor (name, gu, color, type) {
+    super()
     this.name = name
     this.gu = gu
     this.type = type
@@ -41,7 +44,7 @@ export default class Fermentable {
 
   set type (type) {
     if (typeof type === 'string') {
-      type = types.dict.indexOf(type)
+      type = types[type]
     }
     this[typeSym] = type
   }

@@ -61,7 +61,7 @@ export class Recipe extends EventEmitter {
   }
 
   set type (type) {
-    this[typeSym] = types.dict.indexOf(type) || 0
+    this[typeSym] = types[type] || 'all grain'
     this.emit('change', {type: this.type})
   }
 
@@ -239,9 +239,8 @@ export class Recipe extends EventEmitter {
     return this[hopsMassSym]
   }
 
-  set hops (hop) {
-    hop = Array.isArray(hopsSym) ? hop : [hop]
-    this[hopsSym].concat(hopsSym.map(hop => hop instanceof RecipeHop))
+  set hops (...hops) {
+    this[hopsSym].concat(hopsSym.filter(hop => hop instanceof RecipeHop))
     this.emit('change', {hops: this.hops})
   }
 
@@ -249,9 +248,8 @@ export class Recipe extends EventEmitter {
     return this[hopsSym]
   }
 
-  set fermentables (fermentable) {
-    fermentable = Array.isArray(fermentable) ? fermentable : [fermentable]
-    this[fermentablesSym].concat(fermentable.map(fermentable => fermentable instanceof RecipeFermentable))
+  set fermentables (...fermentables) {
+    this[fermentablesSym].concat(fermentables.filter(fermentable => fermentable instanceof RecipeFermentable))
     this.emit('change', {fermentables: this.fermentables})
     if (this[hasMash]) {
       this.mashProfile.emit('change', {fermentables: this.fermentables})
@@ -260,8 +258,5 @@ export class Recipe extends EventEmitter {
 
   get fermentables () {
     return this[fermentablesSym]
-  }
-
-  get og () {
   }
 }

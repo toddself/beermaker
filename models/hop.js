@@ -1,3 +1,5 @@
+import EventEmitter from 'events'
+
 import splitMeasure from '@toddself/split-measure-units'
 
 const types = Object.freeze({
@@ -21,8 +23,9 @@ const timeUnitSym = Symbol('timeUnit')
 const weightUnitSym = Symbol('weightUnit')
 const weightAmountSym = Symbol('weightAmount')
 
-export default class Hop {
+export default class Hop extends EventEmitter {
   constructor (name, description, alpha, purpose) {
+    super()
     this.types = types
     this.purposes = purposes
     this.name = name
@@ -37,7 +40,7 @@ export default class Hop {
 
   set purpose (purpose) {
     if (typeof purpose === 'string') {
-      purpose = this.purposes.dict.indexOf(purpose)
+      purpose = this.purposes[purpose]
     }
     this[purposeSym] = purpose
   }
@@ -80,7 +83,7 @@ export class RecipeHop extends Hop {
 
   set type (type) {
     if (typeof type === 'string') {
-      type = this.types.dict.indexOf(type)
+      type = this.types[type]
     }
     this[typeSym] = type
   }
